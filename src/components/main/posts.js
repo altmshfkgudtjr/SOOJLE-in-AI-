@@ -112,7 +112,37 @@ const PostsEvent = ()=> {
 
 // 포스트 View
 const PostView = (url)=> {
-	console.log(url);
+	let target = document.querySelector("body");
+	target.style.overflow = 'hidden';
+	let background = document.createElement('div');
+	background.classList.add(...['option_background', 'pointer', 'noselect']);
+	background.addEventListener("click", PostViewOff);
+	let content = document.createElement('div');
+	content.classList.add(...['option_cont', 'noselect']);
+
+	let title = document.createElement('div');
+	title.classList.add('option_title');
+	title.textContent = "게시글 QR 코드";
+	content.append(title);
+
+	let qr = document.createElement('img');
+	qr.classList.add('option_qr');
+	qr.src = '/static/images/qr_code.png';
+	content.append(qr);
+
+	let qr_info = document.createElement('div');
+	qr_info.classList.add('option_info');
+	qr_info.textContent = "스마트폰으로 해당 사이트를 바로 확인해보세요!";
+	content.append(qr_info);
+
+	background.append(content);
+	target.append(background);
+}
+
+const PostViewOff = ()=> {
+	if (!event.srcElement.classList.contains('option_background')) return;
+	document.querySelector("body").removeAttribute("style");
+	document.querySelector(".option_background").remove();
 }
 
 

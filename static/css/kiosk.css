@@ -295,28 +295,25 @@ input:focus, textarea {
 	position: relative;
 	display: inline-block;
 	width: 55px;
-	height: 20px;
-	line-height: 20px;
-	font-size: 14px;
 	font-weight: bold;
 	color: var(--sj_liteblue_color);
 	text-align: center;
+	margin-left: 10px;
 }
 .contest_done {
 	position: relative;
 	display: inline-block;
 	width: 55px;
-	height: 20px;
-	line-height: 20px;
-	font-size: 14px;
 	font-weight: bold;
 	color: var(--sj_litered_color);
 	text-align: center;
+	margin-left: 10px;
 }
 .tag {
 	position: relative;
 	display: inline-block;
 	margin-right: 10px;
+	margin-bottom: 10px;
 	border-radius: 50px;
 	width: auto;
 	padding: 0 20px;
@@ -447,4 +444,49 @@ input:focus, textarea {
 	color: #397CFF;
 	font-size: 28px;
 	line-height: 40px;
+}
+.option_background {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0,0,0,.4);
+	border: none;
+	z-index: 20;
+	transition: .5s ease-in-out;
+}
+.option_cont {
+	position: absolute;
+	width: 800px;
+	height: auto;
+	padding: 30px;
+	left: 50%;
+	top: 40%;
+	transform: translate(-50%, -50%);
+	background-color: white;
+	box-shadow: 0 8px 10px 1px rgba(0,0,0,0.14), 0 3px 8px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.2);
+	cursor: default;
+}
+.option_title {
+	position: relative;
+	font-size: 40px;
+	line-height: 40px;
+	text-align: center;
+	margin: 20px 0;e
+}
+.option_qr {
+	position: relative;
+	display: block;
+	width: 400px;
+	height: auto;
+	margin: 0 auto 20px auto;
+}
+.option_info {
+	position: relative;
+	font-size: 30px;
+	line-height: 40px;
+	text-align: center;
+	margin-bottom: 30px;
+	color: #666;
 }
