@@ -1,16 +1,8 @@
 import { Snackbar } from './components/snackbar.js'
 
 const FETCH = (URL, METHOD, DATA, callback) => {
-	let token = sessionStorage.getItem('tk');
-	let authorization;
-    if (token != null && token != undefined && token != 'undefined') {
-        authorization = {'Authorization': "Bearer " + token};
-    } else {
-    	authorization = {};
-    }
 	if (METHOD == "GET") {
 		fetch(URL, {
-			header : authorization,
 			method: METHOD
 		})
 		.then(res => res.json())
@@ -26,9 +18,9 @@ const FETCH = (URL, METHOD, DATA, callback) => {
 	} else {
 		fetch(URL, {
 			method: METHOD,
-			headers: Object.assign({}, {
+			headers: {
 				'Content-Type': 'application/json'
-			}, authorization),
+			},
 			body: JSON.stringify(DATA)
 		})
 		.then(res => res.json())

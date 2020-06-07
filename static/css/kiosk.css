@@ -71,7 +71,18 @@ input:focus, textarea {
 	--sj_litegreen_color: #12B886;
 	--sj_liteblue_color: #0071E3;
 }
-
+::-webkit-scrollbar-track {
+	background: none;
+}
+::-webkit-scrollbar {
+	width: 3px;
+	background: none;
+	display: none;
+}
+::-webkit-scrollbar-thumb {
+	background: none;
+	display: none;
+}
 .noselect {
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
@@ -94,7 +105,205 @@ input:focus, textarea {
 
 /*				Main				*/
 .header {
-	position: relative;
+	position: fixed;
+	top: 0;
 	width: 100vw;
-	height: 50px;
+	height: 180px;
+	border-top: 5px solid black;
+	box-sizing: border-box;
+	background-color: white;
+	z-index: 10;
+}
+.logo {
+	position: absolute;
+	display: block;
+	width: 300px;
+	margin: 30px auto;
+	left: 50%;
+	transform: translate(-50%, 0);	
+}
+.character {
+	position: absolute;
+	width: 100px;
+	height: auto;
+	left: 40px;
+	top: 50px;
+	animation: 3s infinite doongdoong;
+}
+@keyframes doongdoong {
+  0% {
+    top: 50px;
+  }
+  40% {
+    top: 30px;
+  }
+  100% {
+  	top: 50px;
+  }
+}
+.circle_button {
+	position: relative;
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	box-shadow: 0 8px 10px rgba(0,0,0,0.30), 0 5px 10px rgba(0,0,0,0.22);
+	background-color: #397CFF;
+	margin-left: auto;
+	margin-right: 40px;
+	transition: .15s ease-in-out;
+	background-repeat: no-repeat;
+	background-size: auto;
+	background-position: center;
+}
+.circle_button:hover {
+	box-shadow: none;
+}
+.restaurant_btn {
+	margin-top: 50px;
+	background-image: url("/static/icons/restaurant.png");
+}
+.remote_control {
+	position: fixed;
+	width: 80px;
+	height: 40vh;
+	margin-right: 40px;
+	top: 50%;
+	right: 0;
+	transform: translate(0, -50%);
+}
+.upup_btn {
+	position: absolute;
+	top: 0;
+	background-image: url("/static/icons/upup.png");
+}
+.up_btn {
+	position: absolute;
+	top: 14vh;
+	background-image: url("/static/icons/up.png");
+}
+.down_btn {
+	position: absolute;
+	bottom: 14vh;
+	background-image: url("/static/icons/down.png");
+}
+.downdown_btn {
+	position: absolute;
+	bottom: 0;
+	background-image: url("/static/icons/downdown.png");
+}
+.realtime_box {
+	position: fixed;
+	top: 180px;
+	width: 100vw;
+	height: 80px;
+	box-sizing: border-box;
+	padding: 0 40px;
+	background-color: white;
+	z-index: 10;
+}
+.realtime_title {
+	position: relative;
+	font-size: 30px;
+	line-height: 80px;
+	float: left;
+}
+.realtime_title > i {
+	color: var(--sj_litegreen_color);
+}
+.realtime_cont {
+	position: relative;
+	float: right;
+	font-size: 30px;
+	width: 500px;
+	height: 80px;
+	line-height: 80px;
+}
+.realtime_cont > i {
+	float: right;
+	line-height: 80px;
+	color: #888;
+}
+.posts_box {
+	position: relative;
+	width: calc(100% - 200px);
+	height: auto;
+	padding: 50px 0 150px 0;
+	margin-top: 280px;
+	margin-left: 40px;
+	z-index: 0;
+}
+.post {
+	position: relative;
+	width: 100%;
+	height: auto;
+	box-shadow: none;
+	border-bottom: 2px solid #ddd;
+	margin-bottom: 5px;
+	transition: .1s cubic-bezier(0.2, 0, 0.87, 1);
+	font-size: 30px;
+}
+.post_view_card_img {
+	position: relative;
+	width: calc(100% - 40px);
+    max-width: calc(100% - 40px);
+    height: 500px;
+    background-position: center;
+    margin: auto;
+    margin-top: 20px;
+    transition: .3s cubic-bezier(0.25, 0.1, 0.25, 1);
+    box-sizing: border-box;
+}
+.post_view_card_img:hover {
+	height: 800px;
+}
+.post_title_cont_noimg {
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.post_title_cont {
+	position: relative;
+	width: 100%;
+	height: auto;
+	padding: 20px;
+	box-sizing: border-box;
+}
+.post_title {
+	position: relative;
+	width: 100%;
+	margin-bottom: 10px;
+}
+.post_date {
+	position: relative;
+	font-size: 20px;
+	color: black;
+	line-height: 30px;
+	padding-left: 1px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.contest_ing {
+	position: relative;
+	display: inline-block;
+	width: 55px;
+	height: 20px;
+	line-height: 20px;
+	font-size: 14px;
+	font-weight: bold;
+	color: var(--sj_litered_color);
+	text-align: center;
+}
+.contest_done {
+	position: relative;
+	display: inline-block;
+	width: 55px;
+	height: 20px;
+	line-height: 20px;
+	font-size: 14px;
+	font-weight: bold;
+	color: var(--sj_liteblue_color);
+	text-align: center;
 }
