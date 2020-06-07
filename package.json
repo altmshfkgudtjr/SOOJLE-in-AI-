@@ -1,0 +1,41 @@
+{
+  "name": "soojle_kiosk",
+  "version": "1.0.0",
+  "description": "soojle in Sejong University Daeyang AI center.",
+  "main": "app.js",
+  "scripts": {
+    "build": "webpack",
+    "production": "webpack -p",
+    "devserver": "webpack-dev-server --open --progress"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/altmshfkgudtjr/SOOJLE-in-AI-.git"
+  },
+  "keywords": [
+    "soojle"
+  ],
+  "author": "NB",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/altmshfkgudtjr/SOOJLE-in-AI-/issues"
+  },
+  "homepage": "https://github.com/altmshfkgudtjr/SOOJLE-in-AI-#readme",
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/plugin-syntax-object-rest-spread": "^7.8.3",
+    "@babel/preset-env": "^7.9.5",
+    "@kodnificent/sparouter": "^1.1.0",
+    "babel-loader": "^8.1.0",
+    "babel-polyfill": "^6.26.0",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3",
+    "whatwg-fetch": "^3.0.0"
+  },
+  "dependencies": {
+    "install": "^0.13.0",
+    "npm": "^6.14.4",
+    "wowjs": "^1.1.3"
+  }
+}

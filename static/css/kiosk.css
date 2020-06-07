@@ -1,0 +1,86 @@
+/*NanumGothic Font*/
+@font-face { 
+	font-family: 'NanumGothic';
+	src: url('../fonts/NanumBarunGothic/NanumGothic.eot') format('embedded-opentype'),
+	url('../fonts/NanumBarunGothic/NanumGothic.woff') format('woff');
+}
+@font-face { 
+	font-family: 'NanumGothicBold';
+	src: url('../fonts/NanumBarunGothic/NanumGothicBold.eot') format('embedded-opentype'),
+	url('../fonts/NanumBarunGothic/NanumGothicBold.woff') format('woff');
+	font-weight: bold;
+}
+/*NanumvBarunGothic Font*/
+@font-face { 
+	font-family: 'NanumBarunGothic';
+	src: url('../fonts/NanumBarunGothic/NanumBarunGothic.ttf');
+	src: url('../fonts/NanumBarunGothic/NanumBarunGothic.eot') format('embedded-opentype'),
+	url('../fonts/NanumBarunGothic.woff') format('woff');
+}
+@font-face { 
+	font-family: 'NanumBarunGothicBold';
+	src: url('../fonts/NanumBarunGothic/NanumBarunGothicBold.ttf');
+	src: url('../fonts/NanumBarunGothic/NanumBarunGothicBold.eot') format('embedded-opentype'),
+	url('../fonts/NanumBarunGothicBold.woff') format('woff');
+}
+/*AppleSandleNeo Font*/
+@font-face { 
+	font-family: 'AppleSdNeo';
+	src: url('../fonts/AppleSdNeo/AppleSDGothicNeoUL.ttf') format('truetype');
+	font-weight: 300;
+}
+@font-face { 
+	font-family: 'AppleSdNeo';
+	src: url('../fonts/AppleSdNeo/AppleSDGothicNeoR.ttf') format('truetype');
+	font-weight: 500;
+}
+@font-face { 
+	font-family: 'AppleSdNeo';
+	src: url('../fonts/AppleSdNeo/AppleSDGothicNeoB.ttf') format('truetype');
+	font-weight: 800;
+}
+
+html, body {
+	width: 100%;
+	scroll-behavior: smooth;
+	 -webkit-overflow-scrolling: touch;
+}
+a {
+	color: black;
+	-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+div {
+	-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+* {
+	font-family: 'AppleSdNeo', 'sans-serif';
+	-webkit-overflow-scrolling: touch;
+	z-index: inherit;
+	margin: 0;
+	padding: 0;
+}
+input:focus, textarea {
+    outline: none;
+}
+
+:root {
+	--sj_deepdark_color: #2A2A2A;
+	--sj_litedark_color: #E0E0E0;
+	--sj_deepred_color: #c30e2e;
+	--sj_litered_color: #DF0101;
+	--sj_litegreen_color: #12B886;
+	--sj_liteblue_color: #0071E3;
+}
+
+.noselect {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-selecti: none;
+}
+.pointer {
+	cursor: pointer !important;
+	-webkit-tap-highlight-color: transparent;
+}
