@@ -1,4 +1,4 @@
-![image-20200607131431007](C:\Users\NB\AppData\Roaming\Typora\typora-user-images\image-20200607131431007.png)
+![SOOJLE x DAEYANG](./kiosk.png)
 
 ### How to Run? ⌨
 
