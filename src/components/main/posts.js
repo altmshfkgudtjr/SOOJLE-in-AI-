@@ -12,7 +12,6 @@ const Posts = ()=> {
 const PostsEvent = ()=> {
 	ApiNewsfeed((data)=> {
 		let title, src, url, _id, date, end_date, contest_check, contest_block, check;
-		console.log(data);
 		let target = document.querySelector("#posts_box");
 		for (let post of data) {
 			contest_check = false;
@@ -64,6 +63,13 @@ const PostsEvent = ()=> {
 				box_a1_ct_title.textContent = title;
 				box_a1_ct.append(box_a1_ct_title);
 
+				for (let tag of post['tag']) {
+					let tag_box = document.createElement('div');
+					tag_box.classList.add(...['tag', 'noselect']);
+					tag_box.textContent = tag;
+					box_a1_ct.append(tag_box);
+				}
+
 				let box_a1_ct_date = document.createElement('div');
 				box_a1_ct_date.classList.add('post_date');
 				box_a1_ct_date.innerHTML = `<i class="far fa-clock"></i> ${date}${contest_block}`;
@@ -81,6 +87,13 @@ const PostsEvent = ()=> {
 				box_a1_ct_title.classList.add('post_title');
 				box_a1_ct_title.textContent = title;
 				box_a1_ct.append(box_a1_ct_title);
+
+				for (let tag of post['tag']) {
+					let tag_box = document.createElement('div');
+					tag_box.classList.add(...['tag', 'noselect']);
+					tag_box.textContent = tag;
+					box_a1_ct.append(tag_box);
+				}
 
 				let box_a1_ct_date = document.createElement('div');
 				box_a1_ct_date.classList.add('post_date');

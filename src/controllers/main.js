@@ -16,4 +16,19 @@ const ApiNewsfeed = (callback)=> {
 	});
 }
 
-export { ApiNewsfeed }
+const ApiRealTime = (callback)=> {
+	FETCH('http://soojle.sejong.ac.kr/api/v1/analysis/realtime_keyword', 'GET', null, (data)=> {
+		if (data.result == 'success') {
+			if (typeof(callback) == 'function') {
+				callback(data.search_realtime);
+			} else {
+				Snackbar("잘못된 데이터입니다.");
+			}
+		} else {
+			console.log(data);
+			Snackbar("서버와의 연결이 원활하지 않습니다.");
+		}
+	});
+}
+
+export { ApiNewsfeed, ApiRealTime }

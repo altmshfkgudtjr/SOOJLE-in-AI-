@@ -166,6 +166,7 @@ input:focus, textarea {
 	position: fixed;
 	width: 80px;
 	height: 40vh;
+	min-height: 600px;
 	margin-right: 40px;
 	top: 50%;
 	right: 0;
@@ -199,7 +200,8 @@ input:focus, textarea {
 	box-sizing: border-box;
 	padding: 0 40px;
 	background-color: white;
-	z-index: 10;
+	z-index: 9;
+	overflow: hidden;
 }
 .realtime_title {
 	position: relative;
@@ -214,7 +216,7 @@ input:focus, textarea {
 	position: relative;
 	float: right;
 	font-size: 30px;
-	width: 500px;
+	width: 600px;
 	height: 80px;
 	line-height: 80px;
 }
@@ -248,6 +250,7 @@ input:focus, textarea {
     max-width: calc(100% - 40px);
     height: 500px;
     background-position: center;
+    background-repeat: no-repeat;
     margin: auto;
     margin-top: 20px;
     transition: .3s cubic-bezier(0.25, 0.1, 0.25, 1);
@@ -274,16 +277,19 @@ input:focus, textarea {
 	position: relative;
 	width: 100%;
 	margin-bottom: 10px;
+	font-size: 32px;
 }
 .post_date {
 	position: relative;
 	font-size: 20px;
 	color: black;
 	line-height: 30px;
+	margin-top: 10px;
 	padding-left: 1px;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
+	text-align: right;
 }
 .contest_ing {
 	position: relative;
@@ -293,7 +299,7 @@ input:focus, textarea {
 	line-height: 20px;
 	font-size: 14px;
 	font-weight: bold;
-	color: var(--sj_litered_color);
+	color: var(--sj_liteblue_color);
 	text-align: center;
 }
 .contest_done {
@@ -304,6 +310,141 @@ input:focus, textarea {
 	line-height: 20px;
 	font-size: 14px;
 	font-weight: bold;
-	color: var(--sj_liteblue_color);
+	color: var(--sj_litered_color);
 	text-align: center;
+}
+.tag {
+	position: relative;
+	display: inline-block;
+	margin-right: 10px;
+	border-radius: 50px;
+	width: auto;
+	padding: 0 20px;
+	height: 4 0px;
+	line-height: 40px;
+	font-size: 24px;
+	text-align: center;
+	background-color: #ddd;
+	color: #397CFF;
+}
+.tag:hover {
+	background-color: #eee;
+}
+.realword_box {
+	position: relative;
+	width: 100%;
+	height: auto;
+	transition: 1s ease-in-out;
+}
+.realword {
+	position: relative;
+	width: 100%;
+	height: 80px;
+}
+.realword > span {
+	color: var(--sj_litered_color);
+	font-weight: bold;
+	font-style: italic;
+	margin-right: 30px;
+}
+.menu_realtime_hover {
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+.food_background {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0,0,0,.4);
+	border: none;
+	z-index: 20;
+	transition: .5s ease-in-out;
+}
+.food_content {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 85%;
+	height: 100vh;
+	background-color: white;
+	border: none;
+	z-index: 20;
+	transition: .5s ease-in-out;
+	cursor: default;
+	box-shadow: 0 8px 10px 1px rgba(0,0,0,0.14), 0 3px 8px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.2);
+}
+.food_title {
+	position: relative;
+	width: 100%;
+	height: 100px;
+	margin: 120px 0;
+	font-size: 60px;
+	text-align: center;
+	line-height: 100px;
+	color: #397CFF;
+	font-weight: bold;
+}
+.food_title > img {
+	position: relative;
+	display: inline-block;
+	height: 80px;
+	margin-right: 20px;
+	top: 18px;
+}
+.menu_box {
+	position: relative;
+	width: 100%;
+	height: auto;
+	box-sizing: border-box;
+	padding: 30px;
+}
+.guide_restaurant_box {
+	position: relative;
+	display: inline-block;
+	width: 50%;
+	height: auto;
+	box-sizing: border-box;
+	transition: .1s ease-in-out;
+	text-align: center;
+	padding: 10px 0;
+	vertical-align: top;
+	margin-bottom: 60px;
+}
+.guide_restaurant_box > div {
+	overflow: hidden;
+	transition: .4s ease-in-out;
+}
+.guide_restaurant_box_title {
+	position: relative;
+	font-size: 40px;
+	line-height: 50px;
+	color: #12b886;
+	word-break: keep-all;
+	margin-bottom: 10px;
+}
+.guide_restaurant_box_type {
+	position: relative;
+	font-size: 32px;
+	line-height: 40px;
+	color: #397CFF;
+}
+.guide_restaurant_box_post {
+	position: relative;
+	font-size: 28px;
+	line-height: 32px;
+	word-break: keep-all;
+}
+.menu_info {
+	position: absolute;
+	width: auto;
+	height: auto;
+	right: 30px;
+	bottom: 30px;
+	color: #397CFF;
+	font-size: 28px;
+	line-height: 40px;
 }
