@@ -84,3 +84,17 @@ input:focus, textarea {
 	cursor: pointer !important;
 	-webkit-tap-highlight-color: transparent;
 }
+
+
+
+
+
+
+
+
+/*				Main				*/
+.header {
+	position: relative;
+	width: 100vw;
+	height: 50px;
+}
