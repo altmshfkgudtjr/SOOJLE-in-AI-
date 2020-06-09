@@ -57,7 +57,7 @@ div {
 	-webkit-overflow-scrolling: touch;
 	z-index: inherit;
 	margin: 0;
-	padding: 0;
+	padding: 0;1
 }
 input:focus, textarea {
     outline: none;
@@ -473,7 +473,7 @@ input:focus, textarea {
 	font-size: 40px;
 	line-height: 40px;
 	text-align: center;
-	margin: 20px 0;e
+	margin: 20px 0;
 }
 .option_qr {
 	position: relative;

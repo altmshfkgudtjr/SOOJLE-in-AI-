@@ -1,5 +1,6 @@
 import { FETCH } from '../fetch.js'
 import { Snackbar } from '../components/snackbar.js'
+import qrcode from 'qrcode-generator'
 
 const ApiNewsfeed = (callback)=> {
 	FETCH('http://soojle.sejong.ac.kr/api/v1/newsfeed/recommendation', 'GET', null, (data)=> {
@@ -31,4 +32,15 @@ const ApiRealTime = (callback)=> {
 	});
 }
 
-export { ApiNewsfeed, ApiRealTime }
+const ApiQrCode = (url, callback)=> {
+	let qr = qrcode(4, 'L');
+	qr.addData(url);
+	qr.make();
+	if (typeof(callback) == 'function') {
+		callback(qr.createDataURL(8));
+	} else {
+		Snackbar("QR코드 생성에 실패하였습니다.");
+	}
+}
+
+export { ApiNewsfeed, ApiRealTime, ApiQrCode }

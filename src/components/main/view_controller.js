@@ -20,17 +20,11 @@ const ControllerEvent = ()=> {
 		intervalHandler = setInterval(function() { scrollUp(); }, 500);
 		return false;
 	});
-	document.querySelector("#up_btn").addEventListener("mouseup", ()=> {
-		clearInterval(intervalHandler);
-	});
 	// 긴 위
 	document.querySelector("#upup_btn").addEventListener("mousedown", ()=> {
 		scrollUpUP();
 		intervalHandler = setInterval(function() { scrollUpUP(); }, 600);
 		return false;
-	});
-	document.querySelector("#upup_btn").addEventListener("mouseup", ()=> {
-		clearInterval(intervalHandler);
 	});
 	// 짧은 아래
 	document.querySelector("#down_btn").addEventListener("mousedown", ()=> {
@@ -38,18 +32,15 @@ const ControllerEvent = ()=> {
 		intervalHandler = setInterval(function() { scrollDown(); }, 500);
 		return false;
 	});
-	document.querySelector("#down_btn").addEventListener("mouseup", ()=> {
-		clearInterval(intervalHandler);
-	});
 	// 긴 아래
 	document.querySelector("#downdown_btn").addEventListener("mousedown", ()=> {
 		scrollDownDown();
 		intervalHandler = setInterval(function() { scrollDownDown(); }, 600);
 		return false;
 	});
-	document.querySelector("#downdown_btn").addEventListener("mouseup", ()=> {
+	document.querySelector("body").addEventListener("mouseup", ()=> {
 		clearInterval(intervalHandler);
-	});
+	})
 
 
 	const scrollUpUP =()=> {

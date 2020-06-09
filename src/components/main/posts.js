@@ -1,4 +1,4 @@
-import { ApiNewsfeed } from '../../controllers/main.js'
+import { ApiNewsfeed, ApiQrCode } from '../../controllers/main.js'
 
 
 const Posts = ()=> {
@@ -57,7 +57,7 @@ const PostsEvent = ()=> {
 			box.setAttribute('p-id', _id);
 			if (src.length < 10 || src.length == undefined && check == 0) {
 				let box_a1_ct = document.createElement('div');
-				box_a1_ct.classList.add('post_title_cont_noimg');
+				box_a1_ct.classList.add(...['post_title_cont_noimg', 'noselect']);
 				let box_a1_ct_title = document.createElement('div');
 				box_a1_ct_title.classList.add('post_title');
 				box_a1_ct_title.textContent = title;
@@ -78,7 +78,7 @@ const PostsEvent = ()=> {
 				box.append(box_a1_ct);
 			} else {
 				let box_a1_img = document.createElement('div');
-				box_a1_img.classList.add('post_view_card_img');
+				box_a1_img.classList.add(...['post_view_card_img', 'noselect']);
 				box_a1_img.style.backgroundImage = `url('${src}')`;
 				box.append(box_a1_img);
 				let box_a1_ct = document.createElement('div');
@@ -112,31 +112,33 @@ const PostsEvent = ()=> {
 
 // 포스트 View
 const PostView = (url)=> {
-	let target = document.querySelector("body");
-	target.style.overflow = 'hidden';
-	let background = document.createElement('div');
-	background.classList.add(...['option_background', 'pointer', 'noselect']);
-	background.addEventListener("click", PostViewOff);
-	let content = document.createElement('div');
-	content.classList.add(...['option_cont', 'noselect']);
+	ApiQrCode(url, (data)=> {
+		let target = document.querySelector("body");
+		target.style.overflow = 'hidden';
+		let background = document.createElement('div');
+		background.classList.add(...['option_background', 'pointer', 'noselect']);
+		background.addEventListener("click", PostViewOff);
+		let content = document.createElement('div');
+		content.classList.add(...['option_cont', 'noselect']);
 
-	let title = document.createElement('div');
-	title.classList.add('option_title');
-	title.textContent = "게시글 QR 코드";
-	content.append(title);
+		let title = document.createElement('div');
+		title.classList.add('option_title');
+		title.textContent = "게시글 QR 코드";
+		content.append(title);
 
-	let qr = document.createElement('img');
-	qr.classList.add('option_qr');
-	qr.src = '/static/images/qr_code.png';
-	content.append(qr);
+		let qr = document.createElement('img');
+		qr.classList.add('option_qr');
+		qr.src = data;
+		content.append(qr);
 
-	let qr_info = document.createElement('div');
-	qr_info.classList.add('option_info');
-	qr_info.textContent = "스마트폰으로 해당 사이트를 바로 확인해보세요!";
-	content.append(qr_info);
+		let qr_info = document.createElement('div');
+		qr_info.classList.add('option_info');
+		qr_info.textContent = "스마트폰으로 해당 사이트를 바로 확인해보세요!";
+		content.append(qr_info);
 
-	background.append(content);
-	target.append(background);
+		background.append(content);
+		target.append(background);
+	});
 }
 
 const PostViewOff = ()=> {
