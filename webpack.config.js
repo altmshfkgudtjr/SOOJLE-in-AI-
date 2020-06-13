@@ -49,12 +49,10 @@ module.exports = {
         },
         proxy: {
             '/api': {
-                target: "http://192.168.2.185",
+                target: "/",
                 changeOrigin: false,
             }
         }
     },
-    // devtool: 'inline-source-map',
-    // mode: 'development'
     mode: 'production'
 };

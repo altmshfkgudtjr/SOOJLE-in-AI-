@@ -51,10 +51,10 @@ const InsertPosts = (data)=> {
 			contest_block = ``;
 		}
 		if (src.toString().indexOf("everytime") != -1) {
-			src = "./static/images/everytime.jpg";
+			src = "./static/image/everytime.jpg";
 			check = 1;
 		} else if (src.toString().indexOf("daum") != -1) {
-			src = "./static/images/sjstation.png";
+			src = "./static/image/sjstation.png";
 			check = 1;
 		} else if (src.toString().length > 10) {
 			check = 1;

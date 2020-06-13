@@ -12,7 +12,7 @@ const router = new SPARouter(options);
 
 
 // Home
-router.get("/", function(req, router){ 
+router.get("/kiosk/ai", function(req, router){ 
 	app_.reset();
 	MainContainer();
 }).setName("Main");
