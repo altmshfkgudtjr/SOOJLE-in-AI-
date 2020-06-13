@@ -1,4 +1,4 @@
-import { ApiInnerContent, ApiQrCode } from '../../controllers/main.js'
+import { ApiOuterContent, ApiQrCode } from '../../controllers/main.js'
 
 
 const Posts = ()=> {
@@ -10,7 +10,7 @@ const Posts = ()=> {
 }
 
 const PostsEvent = ()=> {
-	ApiInnerContent((data)=> {
+	ApiOuterContent((data)=> {
 		InsertPosts(data);
 	});
 }
