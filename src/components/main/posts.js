@@ -1,113 +1,119 @@
-import { ApiNewsfeed, ApiQrCode } from '../../controllers/main.js'
+import { ApiInnerContent, ApiQrCode } from '../../controllers/main.js'
 
 
 const Posts = ()=> {
 	let view = `
-	<div id="posts_box" class="posts_box"></div>
+	<div id="posts_box" class="posts_box noselect"></div>
 	`;
 
 	return view;
 }
 
 const PostsEvent = ()=> {
-	ApiNewsfeed((data)=> {
-		let title, src, url, _id, date, end_date, contest_check, contest_block, check;
-		let target = document.querySelector("#posts_box");
-		for (let post of data) {
-			contest_check = false;
-			check = 0;
-			title = post['title'];
-			src = post['img'];
-			url = post['url'];
-			_id = post['_id']['$oid'];
-			if (post['date'].$date) date = post['date'].$date;
-			else date = post['date'];
-			if (post['end_date']) {
-				if (post['end_date'].$date) end_date = post['end_date'].$date;
-				else end_date = post['end_date'];
-				if (IsContest(end_date)) {					// 공모전 게시글 판별
-					contest_check = true;
-					date = change_date_realative(end_date);
-				} else {
-					date = change_date_realative(date);
-				}
+	ApiInnerContent((data)=> {
+		InsertPosts(data);
+	});
+}
+
+// 포스트 삽입
+const InsertPosts = (data)=> {
+	let title, src, url, _id, date, end_date, contest_check, contest_block, check;
+	let target = document.querySelector("#posts_box");
+	target.innerHTML = "";
+	for (let post of data) {
+		contest_check = false;
+		check = 0;
+		title = post['title'];
+		src = post['img'];
+		url = post['url'];
+		_id = post['_id']['$oid'];
+		if (post['date'].$date) date = post['date'].$date;
+		else date = post['date'];
+		if (post['end_date']) {
+			if (post['end_date'].$date) end_date = post['end_date'].$date;
+			else end_date = post['end_date'];
+			if (IsContest(end_date)) {					// 공모전 게시글 판별
+				contest_check = true;
+				date = change_date_realative(end_date);
 			} else {
 				date = change_date_realative(date);
 			}
-			if (contest_check == true) {
-				if (new Date(end_date) > new Date(Date.now())) {
-					contest_block = `<div class="contest_ing">진행중</div>`;
-				} else {
-					contest_block = `<div class="contest_done">마감</div>`;
-				}
-			} else {
-				contest_block = ``;
-			}
-			if (src.toString().indexOf("everytime") != -1) {
-				src = "./static/images/everytime.jpg";
-				check = 1;
-			} else if (src.toString().indexOf("daum") != -1) {
-				src = "./static/images/sjstation.png";
-				check = 1;
-			} else if (src.toString().length > 10) {
-				check = 1;
-			}
-			let box = document.createElement('div');
-			box.classList.add(...['post', 'pointer']);
-			box.setAttribute('p-id', _id);
-			if (src.length < 10 || src.length == undefined && check == 0) {
-				let box_a1_ct = document.createElement('div');
-				box_a1_ct.classList.add(...['post_title_cont_noimg', 'noselect']);
-				let box_a1_ct_title = document.createElement('div');
-				box_a1_ct_title.classList.add('post_title');
-				box_a1_ct_title.textContent = title;
-				box_a1_ct.append(box_a1_ct_title);
-
-				for (let tag of post['tag']) {
-					let tag_box = document.createElement('div');
-					tag_box.classList.add(...['tag', 'noselect']);
-					tag_box.textContent = tag;
-					box_a1_ct.append(tag_box);
-				}
-
-				let box_a1_ct_date = document.createElement('div');
-				box_a1_ct_date.classList.add('post_date');
-				box_a1_ct_date.innerHTML = `<i class="far fa-clock"></i> ${date}${contest_block}`;
-				box_a1_ct.append(box_a1_ct_date);
-
-				box.append(box_a1_ct);
-			} else {
-				let box_a1_img = document.createElement('div');
-				box_a1_img.classList.add(...['post_view_card_img', 'noselect']);
-				box_a1_img.style.backgroundImage = `url('${src}')`;
-				box.append(box_a1_img);
-				let box_a1_ct = document.createElement('div');
-				box_a1_ct.classList.add('post_title_cont');
-				let box_a1_ct_title = document.createElement('div');
-				box_a1_ct_title.classList.add('post_title');
-				box_a1_ct_title.textContent = title;
-				box_a1_ct.append(box_a1_ct_title);
-
-				for (let tag of post['tag']) {
-					let tag_box = document.createElement('div');
-					tag_box.classList.add(...['tag', 'noselect']);
-					tag_box.textContent = tag;
-					box_a1_ct.append(tag_box);
-				}
-
-				let box_a1_ct_date = document.createElement('div');
-				box_a1_ct_date.classList.add('post_date');
-				box_a1_ct_date.innerHTML = `<i class="far fa-clock"></i> ${date}${contest_block}`;
-				box_a1_ct.append(box_a1_ct_date);
-
-				box.append(box_a1_ct);
-			}
-			box.addEventListener("mouseup", ()=> {
-				PostView(post['url']);
-			});
-			target.append(box);
+		} else {
+			date = change_date_realative(date);
 		}
-	});
+		if (contest_check == true) {
+			if (new Date(end_date) > new Date(Date.now())) {
+				contest_block = `<div class="contest_ing">진행중</div>`;
+			} else {
+				contest_block = `<div class="contest_done">마감</div>`;
+			}
+		} else {
+			contest_block = ``;
+		}
+		if (src.toString().indexOf("everytime") != -1) {
+			src = "./static/images/everytime.jpg";
+			check = 1;
+		} else if (src.toString().indexOf("daum") != -1) {
+			src = "./static/images/sjstation.png";
+			check = 1;
+		} else if (src.toString().length > 10) {
+			check = 1;
+		}
+		let box = document.createElement('div');
+		box.classList.add(...['post', 'pointer']);
+		box.setAttribute('p-id', _id);
+		if (src.length < 10 || src.length == undefined && check == 0) {
+			let box_a1_ct = document.createElement('div');
+			box_a1_ct.classList.add(...['post_title_cont_noimg', 'noselect']);
+			let box_a1_ct_title = document.createElement('div');
+			box_a1_ct_title.classList.add('post_title');
+			box_a1_ct_title.textContent = title;
+			box_a1_ct.append(box_a1_ct_title);
+
+			for (let tag of post['tag']) {
+				let tag_box = document.createElement('div');
+				tag_box.classList.add(...['tag', 'noselect']);
+				tag_box.textContent = tag;
+				box_a1_ct.append(tag_box);
+			}
+
+			let box_a1_ct_date = document.createElement('div');
+			box_a1_ct_date.classList.add('post_date');
+			box_a1_ct_date.innerHTML = `<i class="far fa-clock"></i> ${date}${contest_block}`;
+			box_a1_ct.append(box_a1_ct_date);
+
+			box.append(box_a1_ct);
+		} else {
+			let box_a1_img = document.createElement('div');
+			box_a1_img.classList.add(...['post_view_card_img', 'noselect']);
+			box_a1_img.style.backgroundImage = `url('${src}')`;
+			box.append(box_a1_img);
+			let box_a1_ct = document.createElement('div');
+			box_a1_ct.classList.add('post_title_cont');
+			let box_a1_ct_title = document.createElement('div');
+			box_a1_ct_title.classList.add('post_title');
+			box_a1_ct_title.textContent = title;
+			box_a1_ct.append(box_a1_ct_title);
+
+			for (let tag of post['tag']) {
+				let tag_box = document.createElement('div');
+				tag_box.classList.add(...['tag', 'noselect']);
+				tag_box.textContent = tag;
+				box_a1_ct.append(tag_box);
+			}
+
+			let box_a1_ct_date = document.createElement('div');
+			box_a1_ct_date.classList.add('post_date');
+			box_a1_ct_date.innerHTML = `<i class="far fa-clock"></i> ${date}${contest_block}`;
+			box_a1_ct.append(box_a1_ct_date);
+
+			box.append(box_a1_ct);
+		}
+		box.addEventListener("mouseup", ()=> {
+			PostView(post['url']);
+		});
+		target.append(box);
+	}
 }
 
 // 포스트 View
@@ -216,4 +222,4 @@ const check_image = (tag)=> {
 	checkimg.src = img_url;
 }
 
-export { Posts, PostsEvent }
+export { Posts, PostsEvent, InsertPosts }

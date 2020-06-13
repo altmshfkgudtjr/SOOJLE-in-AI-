@@ -48,12 +48,13 @@ module.exports = {
             ]
         },
         proxy: {
-            '/API': {
-                target: "http://soojle.sejong.ac.kr",
+            '/api': {
+                target: "http://192.168.2.185",
                 changeOrigin: false,
             }
         }
     },
-    devtool: 'inline-source-map',
-    mode: 'development'
+    // devtool: 'inline-source-map',
+    // mode: 'development'
+    mode: 'production'
 };
